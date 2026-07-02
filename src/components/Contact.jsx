@@ -35,7 +35,7 @@ export default function Contact() {
               <IconHosts />
             </span>
             <h4>Wedding Hosted By</h4>
-            <p>Live &amp; Abass</p>
+            <p>Abass &amp; Live</p>
           </div>
         </div>
       </div>

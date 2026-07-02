@@ -1,14 +1,24 @@
+import { useRef } from 'react';
 import Monogram from './Monogram';
 import { COUPLE, RSVP_LINK } from '../data/content';
 
 export default function Hero() {
   const rsvpHref = RSVP_LINK || '#rsvp';
+  const videoRef = useRef(null);
+
+  function handleTimeUpdate() {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.duration && video.currentTime >= video.duration - 1.5) {
+      video.currentTime = 0;
+    }
+  }
 
   return (
     <header className="hero" id="home">
       <div className="hero-media">
-        <video autoPlay muted loop playsInline poster="/assets/hero-poster.jpg">
-          <source src="/assets/hero-video.mp4" type="video/mp4" />
+        <video ref={videoRef} autoPlay muted playsInline webkit-playsinline="true" poster="/assets/welcome-poster-joyful.jpg" onTimeUpdate={handleTimeUpdate}>
+            <source src="/assets/welcome-video.mp4" type="video/mp4" />
         </video>
       </div>
       <div className="hero-content">
@@ -29,9 +39,7 @@ export default function Hero() {
           >
             RSVP Now
           </a>
-          <a href="#details" className="btn btn-outline">
-            View Details
-          </a>
+          <a href="#details" className="btn btn-outline">View Details</a>
         </div>
       </div>
       <div className="hero-scroll">

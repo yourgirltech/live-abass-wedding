@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
         <Flourish />
         <p className="footer-meta">
-          Live Mayele &amp; Abass Lateef &nbsp;&bull;&nbsp; &copy; 2026. All rights reserved.
+          Abass Lateef &amp; Live Mayele &nbsp;&bull;&nbsp; &copy; 2026. All rights reserved.
         </p>
       </div>
     </footer>

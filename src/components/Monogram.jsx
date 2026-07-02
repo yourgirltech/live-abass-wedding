@@ -13,7 +13,7 @@ export default function Monogram({ size = 64, color, style = {} }) {
           fill="currentColor"
           textAnchor="middle"
         >
-          L&amp;A
+          A&amp;L
         </text>
         <line x1="38" y1="84" x2="82" y2="84" stroke="currentColor" strokeWidth="1.2" />
       </svg>

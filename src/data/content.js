@@ -4,7 +4,7 @@
 
 // RSVP: paste your WithJoy (or other) RSVP link here once it's ready.
 // Every "RSVP Now" button on the site reads from this single constant.
-export const RSVP_LINK = '';
+export const RSVP_LINK = 'https://withjoy.com/abass-and-live/rsvp?utm_medium=web&utm_source=joy&utm_campaign=share_website_dialog';
 
 // Wedding date/time used by the countdown and the "Add to Calendar" button.
 // Reception begins 6:30 PM, Friday 20 November 2026, Sydney (AEDT, UTC+11).
@@ -12,8 +12,8 @@ export const WEDDING_DATETIME_ISO = '2026-11-20T18:30:00+11:00';
 export const WEDDING_END_DATETIME_ISO = '2026-11-20T23:30:00+11:00';
 
 export const COUPLE = {
-  partnerOne: 'Live Mayele',
-  partnerTwo: 'Abass Lateef',
+  partnerOne: 'Abass Lateef',
+  partnerTwo: 'Live Mayele',
 };
 
 export const VENUE = {
@@ -30,9 +30,9 @@ export const HOTEL = {
 };
 
 export const CONTACT = {
-  email: 'livemayele87@gmail.com',
-  phone: '+61 400 000 000',
-  phoneHref: '+61400000000',
+  email: 'Abasslive2@gmail.com',
+  phone: '+61 499 766 320',
+  phoneHref: '+61499766320',
 };
 
 export const timeline = [
@@ -62,14 +62,14 @@ export const timeline = [
     title: 'Our Nikkah',
     text: 'Surrounded by loved ones, we were blessed to become husband and wife through our Nikkah — the beginning of our life together as one.',
     label: 'Our Nikkah',
-    image: '/assets/gallery-i.jpg',
+    image: '/assets/nikkah.jpg',
   },
   {
-    date: '3 December 2025',
-    title: 'Our Traditional Wedding',
-    text: 'We celebrated our beautiful traditional wedding, honouring our families, our cultures, and the journey that brought us together.',
-    label: 'Our Traditional Wedding',
-    image: '/assets/gallery-f.jpg',
+  date: '3 December 2025',
+  title: 'Celebrating Our Nikkah',
+  text: 'Surrounded by family, flowers, and joy, we celebrated becoming husband and wife — honouring our loved ones, our cultures, and the beautiful journey that brought us together.',
+  label: 'Nikkah Celebration',
+  image: '/assets/gallery-f.jpg',
   },
   {
     date: '20 November 2026',

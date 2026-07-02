@@ -386,12 +386,18 @@ body.menu-open .mobile-menu { transform: translateY(0); }
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
+  object-position: center 45%;
   transform: scale(1.02);
 }
 .hero-media::after {
   content: '';
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(20,17,12,0.42) 0%, rgba(20,17,12,0.30) 38%, rgba(20,17,12,0.55) 100%);
+}
+.hero-media video::-webkit-media-controls,
+.hero-media video::-webkit-media-controls-enclosure,
+.hero-media video::-webkit-media-controls-panel {
+  display: none !important;
 }
 .hero-content {
   position: relative;
@@ -429,7 +435,7 @@ body.menu-open .mobile-menu { transform: translateY(0); }
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  font-size: clamp(30px, 6vw, 80px);
+  font-size: clamp(50px, 7vw, 80px);
   line-height: 1;
   letter-spacing:1px;
   color: var(--ivory);
@@ -617,7 +623,7 @@ body.menu-open .mobile-menu { transform: translateY(0); }
 .intro-invite {
   position: relative;
   overflow: hidden;
-  padding: clamp(56px, 6vw, 96px) 0;
+  padding: clamp(56px, 7vw, 96px) 0;
   background-image: url('/assets/intro-bg.jpg');
   background-size: cover;
   background-position: center;
@@ -629,7 +635,15 @@ body.menu-open .mobile-menu { transform: translateY(0); }
   max-width: 900px;
   margin: 0 auto;
 }
-
+.invite-card-note {
+  margin-top: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
 .invite-reveal {
   opacity: 0;
   transform: translateY(28px) scale(0.97);
@@ -673,7 +687,7 @@ body.menu-open .mobile-menu { transform: translateY(0); }
   max-width: 480px;
   margin: 0 auto;
   text-align: center;
-  padding: clamp(24px, 3vw, 30px) clamp(24px, 3.5vw, 36px) clamp(18px, 2.5vw, 24px);
+  padding: clamp(24px, 5vw, 30px) clamp(24px, 3.5vw, 36px) clamp(18px, 2.5vw, 24px);
   background: #FDFAF4;
   border: 1px solid var(--champagne);
   border-radius: 20px;
@@ -1490,5 +1504,36 @@ body.menu-open .mobile-menu { transform: translateY(0); }
   .wax-seal {
     width: 56px;
     top: -26px;
+  }
+  .map-placeholder {
+    aspect-ratio: unset;
+    min-height: unset;
+    height: auto;
+    overflow: visible;
+  }
+  .map-placeholder .map-content {
+    padding: 28px 20px;
+    gap: 10px;
+  }
+  .map-content .addr {
+    font-size: 15px;
+  }
+  .map-pin {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-placeholder {
+    aspect-ratio: 16/9;
+    min-height: 200px;
+  }
+  .map-content {
+    padding: 20px;
   }
 }
