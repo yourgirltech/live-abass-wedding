@@ -78,7 +78,7 @@ export default function Intro() {
             <BowTie />
 
             <p className="invite-card-dress">Black Tie &nbsp;&bull;&nbsp; Dress To Impress</p>
-            <p className="invite-card-note">This is an adults-only celebration. Children of the immediate family are warmly welcome.</p>
+            <p className="invite-card-note">This is an adults-only Event.</p>
             <a href="#details" className="invite-card-btn">
               View Wedding Details <span aria-hidden="true">&rarr;</span>
             </a>

@@ -8,6 +8,7 @@ import Gallery from './components/Gallery';
 import WelcomeVideo from './components/WelcomeVideo';
 import DressCode from './components/DressCode';
 import RSVP from './components/RSVP';
+import Gifts from './components/Gifts';
 import Travel from './components/Travel';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
@@ -26,6 +27,7 @@ export default function App() {
       <WelcomeVideo />
       <DressCode />
       <RSVP />
+      <Gifts />
       <Travel />
       <FAQ />
       <Contact />

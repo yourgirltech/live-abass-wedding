@@ -1,9 +1,3 @@
-// ============================================================================
-// Site configuration — edit the values below to update content across the site
-// ============================================================================
-
-// RSVP: paste your WithJoy (or other) RSVP link here once it's ready.
-// Every "RSVP Now" button on the site reads from this single constant.
 export const RSVP_LINK = 'https://withjoy.com/abass-and-live/rsvp?utm_medium=web&utm_source=joy&utm_campaign=share_website_dialog';
 
 // Wedding date/time used by the countdown and the "Add to Calendar" button.
@@ -31,8 +25,8 @@ export const HOTEL = {
 
 export const CONTACT = {
   email: 'Abasslive2@gmail.com',
-  phone: '+61 499 766 320',
-  phoneHref: '+61499766320',
+  phone: '+61 431 621 332',
+  phoneHref: '+61 431 621 332',
 };
 
 export const timeline = [
@@ -113,4 +107,5 @@ export const navLinks = [
   { href: '#travel', label: 'Travel' },
   { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
+  { href: '#gifts', label: 'Gifts' },
 ];

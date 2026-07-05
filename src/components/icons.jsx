@@ -1,6 +1,3 @@
-// Minimal line-icon set, drawn as simple inline SVGs to match the editorial,
-// thin-stroke aesthetic of the rest of the site. Each accepts a `size` prop.
-
 const base = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.15 };
 
 export function IconCamera({ size = 24 }) {
