@@ -3,7 +3,7 @@ import Monogram from './Monogram';
 import { COUPLE, RSVP_LINK } from '../data/content';
 
 export default function Hero() {
-  const rsvpHref = RSVP_LINK || '#rsvp';
+ const rsvpHref = RSVP_LINK || '/rsvp';
   const videoRef = useRef(null);
 
   function handleTimeUpdate() {

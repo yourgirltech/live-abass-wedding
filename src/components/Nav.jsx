@@ -18,12 +18,12 @@ export default function Nav() {
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
-  const rsvpHref = RSVP_LINK || '#rsvp';
+  const rsvpHref = RSVP_LINK || '/rsvp';
 
   return (
     <>
       <nav className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
-        <a href="#home" className="nav-mark">
+        <a href="/" className="nav-mark">
           <Monogram size={48} color={scrolled ? 'var(--ink)' : 'var(--ivory)'} />
         </a>
         <div className="nav-links">

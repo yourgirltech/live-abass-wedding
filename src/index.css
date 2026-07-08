@@ -1182,52 +1182,149 @@ body.menu-open .mobile-menu { transform: translateY(0); }
 }
 .dresscode-card p { font-size: 13px; }
 
-/* ---------------------------------- RSVP ---------------------------------- */
-#rsvp {
-  padding: clamp(56px, 5vw, 100px) 0;
-}
+/* ── RSVP Section ────────────────────────────────────────────────────── */
 .rsvp-section { text-align: center; }
-.rsvp-section .container { max-width: 720px; }
-.rsvp-section .display-2 { margin-bottom: 18px; }
-.rsvp-section .lede { margin-bottom: 28px; }
-.rsvp-deadline {
-  margin-top: 24px;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--champagne);
-}
-.rsvp-flourish {
+.rsvp-section .container { max-width: 680px; }
+
+/* Stepper */
+.rsvp-stepper {
   display: flex; align-items: center; justify-content: center;
-  gap: 14px;
-  margin-bottom: 18px;
-  color: #F3DCA0;
+  gap: 0; margin: 28px auto 32px; max-width: 200px;
 }
-.rsvp-flourish svg {
-  filter:
-    drop-shadow(0 0 8px rgba(234, 211, 160, 0.9))
-    drop-shadow(0 0 20px rgba(234, 211, 160, 0.55));
-  animation: sparkleTwinkle 2s ease-in-out infinite;
+.rsvp-stepper-line { flex: 1; height: 1px; background: rgba(250,247,241,0.15); }
+.rsvp-dot {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid rgba(250,247,241,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: rgba(250,247,241,0.35);
+  transition: all 0.4s var(--ease); flex-shrink: 0;
 }
-.rsvp-flourish-line {
-  position: relative;
-  width: 56px; height: 1.5px;
-  overflow: hidden;
-  background: linear-gradient(to right, transparent, var(--champagne-deep) 50%, transparent);
+.rsvp-dot.is-active { border-color: var(--champagne-deep); color: var(--champagne-deep); background: rgba(182,145,92,0.12); }
+.rsvp-dot.is-done { background: var(--champagne-deep); border-color: var(--champagne-deep); color: #fff; }
+
+/* Card */
+.rsvp-card {
+  max-width: 560px; margin: 0 auto 28px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(250,247,241,0.12);
+  border-radius: 18px;
+  padding: clamp(28px, 4vw, 40px);
+  text-align: left;
 }
-.rsvp-flourish-line::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 50%; height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255, 250, 235, 1), transparent);
-  animation: shimmerSweep 2.6s ease-in-out infinite;
+.rsvp-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--ivory); margin-bottom: 6px; line-height: 1.35;
+}
+.rsvp-card-title em { color: var(--champagne); }
+.rsvp-card-sub { font-size: 14px; color: rgba(250,247,241,0.55); margin-bottom: 20px; line-height: 1.65; }
+
+/* Fields */
+.rsvp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+@media (max-width: 500px) { .rsvp-row { grid-template-columns: 1fr; } }
+.rsvp-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.rsvp-row .rsvp-field { margin-bottom: 0; }
+.rsvp-field label { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--champagne); }
+.rsvp-field label span { color: #ff9999; }
+.rsvp-field label em { text-transform: none; letter-spacing: 0; font-size: 11px; color: rgba(250,247,241,0.38); }
+.rsvp-field input,
+.rsvp-field select,
+.rsvp-field textarea {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(250,247,241,0.16);
+  border-radius: 10px; color: var(--ivory);
+  font-family: var(--font-body); font-size: 14.5px;
+  padding: 13px 16px; outline: none; width: 100%;
+  transition: border-color 0.3s var(--ease);
+}
+.rsvp-field select option { background: var(--ink); color: var(--ivory); }
+.rsvp-field input::placeholder,
+.rsvp-field textarea::placeholder { color: rgba(250,247,241,0.22); }
+.rsvp-field input:focus,
+.rsvp-field select:focus,
+.rsvp-field textarea:focus { border-color: var(--champagne-deep); }
+.rsvp-field textarea { resize: vertical; min-height: 100px; }
+
+/* Attend buttons */
+.rsvp-attend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+@media (max-width: 460px) { .rsvp-attend-grid { grid-template-columns: 1fr; } }
+.rsvp-attend-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(250,247,241,0.16);
+  border-radius: 14px; color: var(--ivory);
+  cursor: pointer; font-family: var(--font-body);
+  padding: 22px 14px; text-align: center;
+  transition: all 0.35s var(--ease);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.rsvp-attend-btn strong { font-size: 15px; display: block; }
+.rsvp-attend-btn small { font-size: 11.5px; color: rgba(250,247,241,0.45); display: block; }
+.rsvp-attend-emoji { font-size: 28px; }
+.rsvp-attend-btn:hover { border-color: var(--champagne); background: rgba(182,145,92,0.1); }
+.rsvp-attend-btn.is-active { background: var(--champagne-deep); border-color: var(--champagne-deep); }
+.rsvp-attend-btn--no.is-active { background: rgba(100,30,30,0.55); border-color: rgba(155,34,38,0.7); }
+
+/* Toggles */
+.rsvp-toggle-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.rsvp-toggle {
+  flex: 1; min-width: 130px; padding: 12px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(250,247,241,0.16);
+  border-radius: 10px; color: rgba(250,247,241,0.65);
+  font-family: var(--font-body); font-size: 13.5px;
+  cursor: pointer; text-align: center;
+  transition: all 0.3s var(--ease);
+}
+.rsvp-toggle:hover { border-color: var(--champagne); color: var(--ivory); }
+.rsvp-toggle.is-active { background: var(--champagne-deep); border-color: var(--champagne-deep); color: #fff; }
+
+/* Plus one box */
+.rsvp-plusone-box {
+  background: rgba(182,145,92,0.08);
+  border: 1px solid rgba(182,145,92,0.22);
+  border-radius: 12px; padding: 18px; margin: 16px 0;
+}
+.rsvp-plusone-label {
+  font-size: 10.5px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--champagne-deep); margin-bottom: 14px;
 }
 
+/* Buttons */
+.rsvp-next-btn { width: 100%; justify-content: center; margin-top: 20px; }
+.rsvp-next-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.rsvp-btn-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 20px; }
+.rsvp-btn-row .rsvp-next-btn { width: auto; flex: 1; }
+.rsvp-back-btn {
+  background: transparent; border: none;
+  color: rgba(250,247,241,0.4); font-family: var(--font-body);
+  font-size: 13px; cursor: pointer; padding: 8px 0;
+  transition: color 0.3s var(--ease);
+}
+.rsvp-back-btn:hover { color: var(--ivory); }
+.rsvp-error { color: #ff9999; font-size: 13px; font-style: italic; margin-top: 10px; text-align: center; }
+.rsvp-contact-link {
+  display: block; text-align: center; margin-top: 18px;
+  font-size: 12.5px; color: rgba(250,247,241,0.4);
+  text-decoration: underline; text-underline-offset: 3px;
+  transition: color 0.3s var(--ease);
+}
+.rsvp-contact-link:hover { color: var(--champagne); }
+.rsvp-deadline { margin-top: 24px; font-family: var(--font-display); font-style: italic; font-size: 13px; letter-spacing: 0.1em; color: var(--champagne); }
 
+/* Thank you */
+.rsvp-thankyou {
+  max-width: 500px; margin: 20px auto; text-align: center;
+  padding: clamp(36px, 5vw, 52px) clamp(28px, 4vw, 44px);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(250,247,241,0.14);
+  border-radius: 20px;
+}
+.rsvp-thankyou-star { font-size: 30px; color: var(--champagne); margin-bottom: 14px; }
+.rsvp-thankyou h2 { font-family: var(--font-display); font-size: clamp(22px, 3.5vw, 30px); color: var(--ivory); margin-bottom: 14px; }
+.rsvp-thankyou p { color: rgba(250,247,241,0.72); font-size: 15px; line-height: 1.75; margin-bottom: 12px; }
+.rsvp-thankyou strong { color: var(--champagne); }
+.rsvp-thankyou-note { font-size: 13px !important; color: rgba(250,247,241,0.42) !important; }
+.rsvp-thankyou-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
 /* ---------------------------------- Travel ---------------------------------- */
 #travel {
   position: relative;

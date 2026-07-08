@@ -1,4 +1,4 @@
-export const RSVP_LINK = 'https://withjoy.com/abass-and-live/rsvp?utm_medium=web&utm_source=joy&utm_campaign=share_website_dialog';
+export const RSVP_LINK = '/rsvp';
 
 // Wedding date/time used by the countdown and the "Add to Calendar" button.
 // Reception begins 6:30 PM, Friday 20 November 2026, Sydney (AEDT, UTC+11).
