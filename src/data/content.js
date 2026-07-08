@@ -101,11 +101,11 @@ export const faqItems = [
 ];
 
 export const navLinks = [
-  { href: '#story', label: 'Our Story' },
-  { href: '#details', label: 'Details' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#travel', label: 'Travel' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contact' },
-  { href: '#gifts', label: 'Gifts' },
+  { href: '/#story', label: 'Our Story' },
+  { href: '/#details', label: 'Details' },
+  { href: '/#gallery', label: 'Gallery' },
+  { href: '/#travel', label: 'Travel' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#contact', label: 'Contact' },
+  { href: '/#gifts', label: 'Gifts' },
 ];
