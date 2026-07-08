@@ -1,6 +1,5 @@
 import Monogram from './Monogram';
 import useReveal from '../hooks/useReveal';
-import { RSVP_LINK } from '../data/content';
 
 function Flourish() {
   return (
@@ -16,7 +15,6 @@ function Flourish() {
 
 export default function RSVP() {
   const ref = useReveal('is-visible');
-  const rsvpHref = RSVP_LINK || '#';
 
   return (
     <section className="bg-ink rsvp-section" id="rsvp">
@@ -26,15 +24,10 @@ export default function RSVP() {
         <span className="eyebrow">RSVP</span>
         <h2 className="display-2">Join Us In Celebration</h2>
         <p className="lede">
-          Your presence would mean the world to us. Please let us know if you'll be celebrating
-          with us by following the link below.
+          Your presence would mean the world to us. Kindly let us know if
+          you&rsquo;ll be celebrating with us by the <strong>20th of October 2026</strong>.
         </p>
-        <a
-          href={rsvpHref}
-          className="btn btn-gold btn-lg"
-          target={RSVP_LINK ? '_blank' : undefined}
-          rel={RSVP_LINK ? 'noopener' : undefined}
-        >
+        <a href="/rsvp" className="btn btn-gold btn-lg">
           RSVP Now
         </a>
         <div className="rsvp-deadline">Kindly RSVP by 20 October 2026</div>

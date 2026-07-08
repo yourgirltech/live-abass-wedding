@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Countdown from './components/Countdown';
@@ -13,8 +15,9 @@ import Travel from './components/Travel';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import RSVPPage from './pages/RSVPPage';
 
-export default function App() {
+function Home() {
   return (
     <>
       <Nav />
@@ -33,5 +36,16 @@ export default function App() {
       <Contact />
       <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/rsvp" element={<RSVPPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
