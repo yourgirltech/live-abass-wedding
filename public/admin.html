@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Live & Abass — RSVP Admin</title>
+<style>
+:root{--ink:#2A2620;--ivory:#FAF7F1;--gold:#B6915C;--champagne:#D2BD93;--green:#2d6a4f;--red:#9b2226;--orange:#856404;--border:#e8e0d0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:#F5F0E8;color:var(--ink);min-height:100vh}
+
+/* LOGIN */
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#EFE3D3,#F8F5F0)}
+.lcard{background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(42,38,32,.14);padding:52px 44px;width:100%;max-width:400px;text-align:center}
+.lcard h1{font-size:24px;color:var(--ink);margin-bottom:4px}
+.lcard em{display:block;color:var(--gold);font-size:13px;font-style:italic;margin-bottom:4px}
+.lcard small{display:block;color:#aaa;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:32px}
+.lcard input{width:100%;padding:14px 18px;border:1px solid var(--border);border-radius:10px;font-size:14px;margin-bottom:14px;outline:none;font-family:inherit;transition:border .3s}
+.lcard input:focus{border-color:var(--gold)}
+.lcard button{width:100%;padding:14px;background:var(--gold);color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer;font-family:inherit;letter-spacing:.1em;transition:background .3s}
+.lcard button:hover{background:var(--ink)}
+.lerr{color:var(--red);font-size:12px;margin-top:10px;font-style:italic;min-height:18px}
+
+/* DASHBOARD */
+.dash{display:none}
+.dash.on{display:block}
+header{background:var(--ink);color:var(--ivory);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.htitle h1{font-size:18px;font-weight:normal;letter-spacing:.05em}
+.htitle small{font-style:italic;color:var(--champagne);font-size:12px;display:block;margin-top:2px}
+.hbtn{background:transparent;border:1px solid rgba(250,247,241,.3);color:var(--ivory);padding:8px 18px;border-radius:8px;cursor:pointer;font-size:12px;font-family:inherit;letter-spacing:.08em;transition:background .3s}
+.hbtn:hover{background:rgba(250,247,241,.1)}
+
+main{max-width:1400px;margin:0 auto;padding:28px 20px}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:28px}
+.sc{background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(42,38,32,.08);padding:22px 16px;text-align:center;border-top:3px solid var(--champagne)}
+.sc.green{border-top-color:#2d6a4f}
+.sc.red{border-top-color:var(--red)}
+.sc .n{font-size:38px;font-weight:bold;color:var(--ink)}
+.sc .l{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+
+/* CONTROLS */
+.ctrls{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.ctrls input,.ctrls select{padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;outline:none;font-family:inherit;background:#fff;transition:border .3s}
+.ctrls input{min-width:220px}
+.ctrls input:focus,.ctrls select:focus{border-color:var(--gold)}
+.rbtn{padding:10px 20px;background:var(--gold);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-family:inherit;letter-spacing:.08em;transition:background .3s}
+.rbtn:hover{background:var(--ink)}
+
+/* TABLE */
+.tw{background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(42,38,32,.08);overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:900px}
+th{background:var(--ink);color:var(--ivory);padding:13px 14px;text-align:left;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:normal;white-space:nowrap}
+td{padding:13px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#faf7f1}
+
+/* BADGES */
+.b{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;font-weight:bold}
+.b-yes{background:#d8f3dc;color:var(--green)}
+.b-no{background:#fde8e8;color:var(--red)}
+.b-pending{background:#fff3cd;color:var(--orange)}
+.b-confirmed{background:#d8f3dc;color:var(--green)}
+.b-declined{background:#fde8e8;color:var(--red)}
+
+/* ACTION BUTTONS */
+.ab{padding:5px 11px;border-radius:6px;border:1px solid var(--border);font-size:11px;cursor:pointer;font-family:inherit;background:#fff;margin:2px;transition:all .25s;white-space:nowrap}
+.ab:hover{background:#f5f0e8}
+.ab.confirm{border-color:var(--green);color:var(--green)}
+.ab.confirm:hover{background:#d8f3dc}
+.ab.decline{border-color:var(--red);color:var(--red)}
+.ab.decline:hover{background:#fde8e8}
+.ab.del{border-color:#ccc;color:#999}
+.ab.del:hover{background:#fde8e8;border-color:var(--red);color:var(--red)}
+
+.plus-tag{background:#e8f4fd;color:#1a6b9e;border-radius:4px;padding:2px 7px;font-size:10px;display:inline-block}
+.empty{text-align:center;padding:56px;color:#aaa;font-style:italic}
+.loading-row{text-align:center;padding:40px;color:var(--gold);font-style:italic}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--ink);color:var(--ivory);padding:12px 20px;border-radius:10px;font-size:13px;opacity:0;transition:opacity .4s;z-index:999;border-left:3px solid var(--gold)}
+.toast.show{opacity:1}
+
+@media(max-width:600px){main{padding:12px}.ctrls input{min-width:100%;width:100%}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login" id="loginScreen">
+  <div class="lcard">
+    <h1>Live &amp; Abass</h1>
+    <em>Wedding Reception — 20 November 2026</em>
+    <small>Admin Dashboard</small>
+    <input type="password" id="pw" placeholder="Enter your password" />
+    <button onclick="login()">Sign In</button>
+    <div class="lerr" id="lerr"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dash" id="dash">
+  <header>
+    <div class="htitle">
+      <h1>Live &amp; Abass — RSVP Dashboard</h1>
+      <small>20 November 2026 &middot; Doltone House Western Sydney</small>
+    </div>
+    <button class="hbtn" onclick="logout()">Sign Out</button>
+  </header>
+
+  <main>
+    <div class="stats">
+      <div class="sc"><div class="n" id="s0">—</div><div class="l">Total RSVPs</div></div>
+      <div class="sc green"><div class="n" id="s1">—</div><div class="l">Attending</div></div>
+      <div class="sc red"><div class="n" id="s2">—</div><div class="l">Declined</div></div>
+      <div class="sc"><div class="n" id="s3">—</div><div class="l">Plus Ones</div></div>
+      <div class="sc green"><div class="n" id="s4">—</div><div class="l">✓ Confirmed</div></div>
+      <div class="sc"><div class="n" id="s5">—</div><div class="l">⏳ Pending</div></div>
+    </div>
+
+    <div class="ctrls">
+      <input type="text" id="search" placeholder="Search by name or email..." oninput="render()" />
+      <select id="fa" onchange="render()">
+        <option value="">All Guests</option>
+        <option value="yes">Attending</option>
+        <option value="no">Declined</option>
+      </select>
+      <select id="fs" onchange="render()">
+        <option value="">All Statuses</option>
+        <option value="pending">Pending</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="declined">Declined</option>
+      </select>
+      <button class="rbtn" onclick="load()">↻ Refresh</button>
+    </div>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Attending</th>
+            <th>Plus One</th>
+            <th>Knows Couple</th>
+            <th>Note</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr><td colspan="11" class="loading-row">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPABASE_URL = 'https://zgtlcczoexzcjvbxfqkc.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpndGxjY3pvZXh6Y2p2YnhmcWtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0NTAzNzQsImV4cCI6MjA5OTAyNjM3NH0.w5bEg50skyWHdxA21EaIX7r1uFuBqyXnXRcqrjmAeG4';
+const ADMIN_PASSWORD = 'live&abass2026';
+const HEADERS = { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
+
+let all = [];
+
+document.getElementById('pw').addEventListener('keydown', e => e.key === 'Enter' && login());
+
+function login() {
+  const pw = document.getElementById('pw').value;
+  if (pw !== ADMIN_PASSWORD) {
+    document.getElementById('lerr').textContent = 'Incorrect password. Please try again.';
+    return;
+  }
+  document.getElementById('lerr').textContent = '';
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('dash').classList.add('on');
+  load();
+}
+
+function logout() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('dash').classList.remove('on');
+  document.getElementById('pw').value = '';
+  all = [];
+}
+
+async function load() {
+  document.getElementById('tbody').innerHTML = '<tr><td colspan="11" class="loading-row">Loading guests...</td></tr>';
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rsvps?select=*&order=submitted_at.desc`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    all = await res.json();
+    updateStats();
+    render();
+  } catch {
+    document.getElementById('tbody').innerHTML = '<tr><td colspan="11" class="empty">Failed to load. Check your connection and try refreshing.</td></tr>';
+  }
+}
+
+function updateStats() {
+  document.getElementById('s0').textContent = all.length;
+  document.getElementById('s1').textContent = all.filter(r => r.attending === 'yes').length;
+  document.getElementById('s2').textContent = all.filter(r => r.attending === 'no').length;
+  document.getElementById('s3').textContent = all.filter(r => r.has_plus_one).length;
+  document.getElementById('s4').textContent = all.filter(r => r.status === 'confirmed').length;
+  document.getElementById('s5').textContent = all.filter(r => r.status === 'pending').length;
+}
+
+function render() {
+  const s = document.getElementById('search').value.toLowerCase();
+  const fa = document.getElementById('fa').value;
+  const fs = document.getElementById('fs').value;
+  const rows = all.filter(r => {
+    const name = `${r.first_name} ${r.last_name}`.toLowerCase();
+    return (!s || name.includes(s) || (r.email||'').toLowerCase().includes(s))
+      && (!fa || r.attending === fa)
+      && (!fs || r.status === fs);
+  });
+
+  const tb = document.getElementById('tbody');
+  if (!rows.length) { tb.innerHTML = '<tr><td colspan="11" class="empty">No RSVPs match your filter.</td></tr>'; return; }
+
+  tb.innerHTML = rows.map((r, i) => `
+    <tr>
+      <td style="color:#bbb;font-size:11px">${i+1}</td>
+      <td><strong>${e(r.first_name)} ${e(r.last_name)}</strong></td>
+      <td style="font-size:11.5px"><a href="mailto:${e(r.email)}" style="color:var(--gold)">${e(r.email)}</a></td>
+      <td style="font-size:12px">${e(r.phone||'—')}</td>
+      <td><span class="b b-${r.attending}">${r.attending==='yes'?'✓ Yes':'✗ No'}</span></td>
+      <td>
+        ${r.has_plus_one
+          ? `<span class="plus-tag">+1</span><br/><span style="font-size:11.5px">${e(r.plus_one_first_name||'')} ${e(r.plus_one_last_name||'')}</span><br/><span style="font-size:10.5px;color:#999">${e(r.plus_one_email||'')}</span>`
+          : '<span style="color:#ccc;font-size:12px">—</span>'}
+      </td>
+      <td style="font-size:12px;text-transform:capitalize">${e((r.how_know||'—').replace(/_/g,' '))}</td>
+      <td style="font-size:11.5px;font-style:italic;max-width:180px;word-break:break-word;color:#777">${e(r.decline_note||'—')}</td>
+      <td><span class="b b-${r.status}">${r.status}</span></td>
+      <td style="font-size:11px;color:#999;white-space:nowrap">${(r.submitted_at||'').split('T')[0]}</td>
+      <td style="white-space:nowrap">
+        ${r.status!=='confirmed'?`<button class="ab confirm" onclick="updateStatus('${r.id}','confirmed')">✓ Confirm</button>`:''}
+        ${r.status!=='declined'?`<button class="ab decline" onclick="updateStatus('${r.id}','declined')">✗ Decline</button>`:''}
+        ${r.status!=='pending'?`<button class="ab" onclick="updateStatus('${r.id}','pending')">↺ Pending</button>`:''}
+        <button class="ab del" onclick="del('${r.id}')">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+
+async function updateStatus(id, status) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/rsvps?id=eq.${id}`, {
+    method: 'PATCH', headers: HEADERS,
+    body: JSON.stringify({ status }),
+  });
+  if (res.ok) { toast(`Guest ${status}`); load(); }
+  else toast('Failed to update. Try again.');
+}
+
+async function del(id) {
+  if (!confirm('Delete this RSVP permanently? This cannot be undone.')) return;
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/rsvps?id=eq.${id}`, {
+    method: 'DELETE', headers: HEADERS,
+  });
+  if (res.ok) { toast('RSVP deleted'); load(); }
+  else toast('Failed to delete.');
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function e(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+</body>
+</html>
