@@ -35,10 +35,10 @@ export default function WelcomeVideo() {
           <div className={`video-feature ${isPlaying ? 'is-playing' : ''}`}>
             <video
               ref={videoRef}
-              poster="/assets/gallery-d.jpg"
+              poster="/assets/gallery-d.webp"
               controls={isPlaying}
               playsInline
-              preload="auto"
+              preload="none"
               loop
               onPause={handlePause}
             >
@@ -46,7 +46,7 @@ export default function WelcomeVideo() {
             </video>
             <img
               className={`video-poster-overlay ${!isPlaying ? 'is-visible' : ''}`}
-              src="/assets/gallery-d.jpg"
+              src="/assets/gallery-d.webp"
               alt=""
             />
             {!isPlaying && (

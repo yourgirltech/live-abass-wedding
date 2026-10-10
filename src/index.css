@@ -624,7 +624,7 @@ body.menu-open .mobile-menu { transform: translateY(0); }
   position: relative;
   overflow: hidden;
   padding: clamp(56px, 7vw, 96px) 0;
-  background-image: url('/assets/intro-bg.jpg');
+  background-image: url('/assets/intro-bg.webp');
   background-size: cover;
   background-position: center;
 }

@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <header className="hero" id="home">
       <div className="hero-media">
-        <video ref={videoRef} autoPlay muted playsInline webkit-playsinline="true" poster="/assets/welcome-poster-joyful.jpg" onTimeUpdate={handleTimeUpdate}>
+        <video ref={videoRef} autoPlay muted playsInline webkit-playsinline="true" preload="auto" poster="/assets/welcome-poster-joyful.webp" onTimeUpdate={handleTimeUpdate}>
             <source src="/assets/welcome-video.mp4" type="video/mp4" />
         </video>
       </div>

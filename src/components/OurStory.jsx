@@ -19,7 +19,7 @@ function TimelineItem({ item }) {
       <div className="timeline-photo">
         <div className="photo-placeholder ratio-portrait">
           {item.image ? (
-            <img src={item.image} alt={item.title} />
+            <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
           ) : (
             <div className="ph-inner">
               <Icon size={24} />

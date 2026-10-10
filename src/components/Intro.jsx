@@ -60,7 +60,7 @@ export default function Intro() {
           <div className="invite-card invite-reveal invite-reveal--delay" ref={cardRef}>
             <CornerLeaf className="invite-card-leaf--tr" />
             <CornerLeaf className="invite-card-leaf--bl" />
-            <img className="wax-seal" src="/assets/wax-seal.png" alt="" aria-hidden="true" />
+            <img className="wax-seal" src="/assets/wax-seal.webp" width="280" height="280" alt="" aria-hidden="true" />
 
             <p className="invite-card-eyebrow">We Invite You To Join Us On</p>
             <h3 className="invite-card-date">20 November 2026</h3>
