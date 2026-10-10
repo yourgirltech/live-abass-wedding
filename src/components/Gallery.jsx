@@ -46,7 +46,7 @@ export default function Gallery() {
                 <div key={item.id} className={`gallery-item gallery-item--${item.id}`}>
                   <div className="photo-placeholder">
                     {item.image ? (
-                      <img src={item.image} alt={item.label} />
+                      <img src={item.image} alt={item.label} loading="lazy" decoding="async" />
                     ) : (
                       <div className="ph-inner">
                         <Icon size={24} />
